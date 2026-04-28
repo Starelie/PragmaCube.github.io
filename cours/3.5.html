@@ -112,7 +112,7 @@
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Déclarer le moteur utilisé:
+### Déclarer le moteur utilisé:
 
 ```c++
 #include <frc/system/plant/DCMotor.h>
@@ -121,12 +121,12 @@ frc::DCMotor* mGearBox = new frc::DCMotor{
     frc::DCMotor::NEO(kMotorNumber)};
 ```
 
-Si `kMotorNumber` n'est pas précisé, la gear box aura un seul moteur
+&shy;<!-- .element: class="fragment" data-fragment-index="1" --> Si `kMotorNumber` n'est pas précisé, la gear box aura un seul moteur
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Déclarer l'objet SparkMax:
+### Déclarer l'objet SparkMax:
 
 ```c++
 #include <rev/SparkMax.h>
@@ -139,13 +139,73 @@ rev::spark::SparkMax* mSparkMax = new rev::spark::SparkMax{
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Déclarer l'objet SparkMaxSim:
+### Déclarer l'objet SparkMaxSim:
 
 ```c++
 #include <rev/sim/SparkMaxSim.h>
 
 rev::spark::SparkMaxSim* mSparkMaxSim = new
     rev::spark::SparkMaxSim{mGearBox, mSparkMax};
+```
+
+</div></script></section></section><section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Décrire le mécanisme:
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Heureusement, WPILib nous firnis des classes qui aident à la simulation de mécanismes
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Il faut donc créer une commande prédictive (plant)
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Commande prédictive d'un ascenseur/grimpeur:
+
+```cpp
+#include <frc/system/LinearSystem.h>
+#include <frc/system/plant/LinearSystemId.h>
+
+frc::LinearSystem<2, 1, 2>* mElevatorPlant = new
+    frc::LinearSystem<2, 1, 2>{
+        frc::LinearSystemId::ElevatorSystem(
+            *mGearBox,
+            kMass,
+            kDrumRadius,
+            kGearRatio)};
+```
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Commande prédictive d'un lanceur:
+
+```cpp
+#include <frc/system/LinearSystem.h>
+#include <frc/system/plant/LinearSystemId.h>
+
+frc::LinearSystem<1, 1, 1>* mFlywheelPlant = new
+    frc::LinearSystem<1, 1, 1>{
+        frc::LinearSystemId::FlywheelSystem(
+            *mGearBox,
+            kMOI,
+            kGearRatio)};
+```
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Commande prédictive d'un bras/pivot:
+
+```cpp
+#include <frc/system/LinearSystem.h>
+#include <frc/system/plant/LinearSystemId.h>
+
+frc::LinearSystem<2, 1, 2>* mArmPlant = new
+    frc::LinearSystem<2, 1, 2>{
+        frc::LinearSystemId::SingleJointedArmSystem(
+            *mGearBox,
+            kMOI,
+            kGearRatio)};
 ```
 
 </div></script></section></section>
