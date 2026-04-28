@@ -93,7 +93,7 @@
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Fonctionnement de la simulation:
+## Fonctionnement de la simulation :
 
 - &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Simuler un moteur
 - &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Décrire le mécanisme
@@ -103,7 +103,7 @@
 </div></script></section><section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Simuler un moteur (REVLib):
+## Simuler un moteur (REVLib) :
 
 - &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Déclarer le moteur utilisé
 - &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Déclarer l'objet SparkMax
@@ -112,7 +112,7 @@
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Déclarer le moteur utilisé:
+### Déclarer le moteur utilisé :
 
 ```c++
 #include <frc/system/plant/DCMotor.h>
@@ -126,7 +126,7 @@ frc::DCMotor* mGearBox = new frc::DCMotor{
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Déclarer l'objet SparkMax:
+### Déclarer l'objet SparkMax :
 
 ```c++
 #include <rev/SparkMax.h>
@@ -139,7 +139,7 @@ rev::spark::SparkMax* mSparkMax = new rev::spark::SparkMax{
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Déclarer l'objet SparkMaxSim:
+### Déclarer l'objet SparkMaxSim :
 
 ```c++
 #include <rev/sim/SparkMaxSim.h>
@@ -151,7 +151,7 @@ rev::spark::SparkMaxSim* mSparkMaxSim = new
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Simuler simplement le SparkMax:
+### Simuler simplement le SparkMax :
 
 ```c++
 mSparkMaxSim->SetAppliedOutput(output);
@@ -170,7 +170,7 @@ mSparkMaxSim->iterate(velocity, 12, 0.02);
 </div></script></section></section><section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Décrire le mécanisme:
+## Décrire le mécanisme :
 
 - &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Heureusement, WPILib nous firnis des classes qui aident à la simulation de mécanismes
 - &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Il faut donc créer une commande prédictive (plant)
@@ -178,7 +178,7 @@ mSparkMaxSim->iterate(velocity, 12, 0.02);
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Commande prédictive d'un ascenseur/grimpeur:
+### Commande prédictive d'un ascenseur/grimpeur :
 
 ```cpp
 #include <frc/system/LinearSystem.h>
@@ -196,7 +196,7 @@ frc::LinearSystem<2, 1, 2>* mElevatorPlant = new
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Commande prédictive d'un lanceur:
+### Commande prédictive d'un lanceur :
 
 ```cpp
 #include <frc/system/LinearSystem.h>
@@ -213,7 +213,7 @@ frc::LinearSystem<1, 1, 1>* mFlywheelPlant = new
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Commande prédictive d'un bras/pivot:
+### Commande prédictive d'un bras/pivot :
 
 ```cpp
 #include <frc/system/LinearSystem.h>
