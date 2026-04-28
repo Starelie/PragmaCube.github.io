@@ -172,7 +172,7 @@ mSparkMaxSim->iterate(velocity, 12, 0.02);
 
 ## Décrire le mécanisme :
 
-- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Heureusement, WPILib nous firnis des classes qui aident à la simulation de mécanismes
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Heureusement, WPILib nous fournit des classes qui aident à la description des mécanismes
 - &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Il faut donc créer une commande prédictive (plant)
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
@@ -226,6 +226,75 @@ frc::LinearSystem<2, 1, 2>* mArmPlant = new
             kMOI,
             kGearRatio)};
 ```
+
+</div></script></section></section><section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Prévoir comment le mécanisme va réagir :
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Encore une fois, WPILib nous fournit des classes qui aident à la simulation de mécanismes
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Il faut donc créer un objet simulant le mécanisme grâce à la commande prédictive
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Simulation d'un ascenseur/grimpeur :
+
+```cpp
+#include <frc/simulation/ElevatorSim.h>
+
+frc::sim::ElevatorSim* mElevatorSim = new
+    frc::sim::ElevatorSim{
+        *mElevatorPlant,
+        *mGearBox,
+        kMinHeight,
+        kMaxHeight,
+        kDoGravitySimulation,
+        kStartingHeight,
+        kStdDevs};
+```
+
+Le `kStdDevs` détermine à quel point on croit les mesures, ici on utilisera `{0.0, 0.0}` pour les croire totalement
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Simulation d'un lanceur :
+
+```cpp
+#include <frc/simulation/FlywheelSim.h>
+
+frc::sim::FlywheelSim* mFlywheelSim = new
+    frc::sim::FlywheelSim{
+        *mFlywheelPlant,
+        *mGearBox,
+        kStdDevs};
+```
+
+Le `kStdDevs` détermine à quel point on croit les mesures, ici on utilisera `{0.0}` pour les croire totalement
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Simulation d'un bras/pivot :
+
+```cpp
+#include <frc/simulation/SingleJointedArmSim.h>
+
+frc::sim::SingleJointedArmSim* mArmSim = new
+    frc::sim::SingleJointedArmSim{
+        *mArmPlant,
+        *mGearBox,
+        kGearRatio,
+        kArmLenght,
+        kMinAngle,
+        kMaxAngle,
+        kDoGravitySimulation,
+        kStartingAngle,
+        kStdDevs};
+```
+
+Le `kStdDevs` détermine à quel point on croit les mesures, ici on utilisera `{0.0, 0.0}` pour les croire totalement
 
 </div></script></section></section>
     </div>
