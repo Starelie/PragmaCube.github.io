@@ -117,8 +117,11 @@
 ```c++
 #include <frc/system/plant/DCMotor.h>
 
-frc::DCMotor* mGearBox = new frc::DCMotor{frc::DCMotor::NEO()};
+frc::DCMotor* mGearBox = new frc::DCMotor{
+    frc::DCMotor::NEO(kMotorNumber)};
 ```
+
+Si `kMotorNumber` n'est pas précisé, la gear box aura un seul moteur
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -136,7 +139,7 @@ rev::spark::SparkMax* mSparkMax = new rev::spark::SparkMax{
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Déclarer le moteur utilisé:
+## Déclarer l'objet SparkMaxSim:
 
 ```c++
 #include <rev/sim/SparkMaxSim.h>
