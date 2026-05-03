@@ -98,7 +98,7 @@
 - &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Simuler un moteur
 - &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Décrire le mécanisme
 - &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Prévoir comment le mécanisme va réagir
-- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> Avancer la simulation
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" --> Faire avancer la simulation
 
 </div></script></section><section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -295,6 +295,51 @@ frc::sim::SingleJointedArmSim* mArmSim = new
 ```
 
 Le `kStdDevs` détermine à quel point on croit les mesures, ici on utilisera `{0.0, 0.0}` pour les croire totalement
+
+</div></script></section></section><section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Faire avancer la simulation :
+
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Donner l'input à la simulation
+2. &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Donner le temps à avancer
+3. &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Itérer le moteur sim avec la prédiction de la simulation
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Donner l'input à la simulation :
+
+L'input doit être en volts
+Cette valeur peut être obtenu grace à un feedforward
+
+```cpp
+mMecaSim->SetInputVoltage(iVoltage);
+mMecaSim->SetInputVoltage(mFeedforward->Calculate(iVelocity));
+```
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Donner le temps à avancer :
+
+```cpp
+mMecaSim->Update(0.02_s);
+```
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Itérer le moteur sim avec la prédiction de la simulation :
+
+```cpp
+mSparkMaxSim->iterate(mMecaSim->GetVelocity().value(), 12, 0.02);
+```
+
+&shy;<!-- .element: class="fragment" data-fragment-index="1" --> La méthode `iterate` de `SparkMaxSim` prend les paramètres suivants:
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" --> La vitesse (par défault en rpm mais mis à l'échelle par le `VelocityConversionFactor` de la configuration)
+2. &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Le voltage disponible (estimé à 12V)
+3. &shy;<!-- .element: class="fragment" data-fragment-index="4" --> Le temps sur lequel itérer (20 ms => 0.02s)
 
 </div></script></section></section>
     </div>
