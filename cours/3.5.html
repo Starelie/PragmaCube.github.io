@@ -90,10 +90,36 @@
 # Cours 12
 ## Simulation dans WPILib
 
+</div></script></section><section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Comment Simuler du code FRC :
+
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Démarer la simulation avec la commande `.\gradlew simulateExternalNativeDebug` ou l'extension VSCode de WPILib
+2. &shy;<!-- .element: class="fragment" data-fragment-index="2" --> C'est tout! Tout le code autre que celui qui active des systèmes ou lis des capteurs est maintenant simulé
+3. &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Tu peux regarder le SimGUI ou te connecter au NetworkTables grace au Dashboard de ton choix
+
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Fonctionnement de la simulation :
+## SimGUI :
+
+<img src="../assets/img/3.5/sim-gui.png" alt="" style="object-fit: scale-down;max-height:80%">
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Explication des parties du SimGUI :
+
+1. À gauche différentes parties simulant la DriverStation (Si la vraie n'est pas utilisée)
+2. Au centre des informations sur NetworkTables
+3. À droite la liste (ici vide) de certaines composantes simulées (moteurs et capteurs surtout)
+4. En haut à droite, options extra (e.g. LEDs, graphiques)
+
+</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Différentes facettes de la simulation d'un mécanisme :
 
 - &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Simuler un moteur
 - &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Décrire le mécanisme
