@@ -200,6 +200,7 @@ mSparkMaxSim->iterate(velocity, 12, 0.02);
 
 - &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Heureusement, WPILib nous fournit des classes qui aident à la description des mécanismes
 - &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Il faut donc créer une commande prédictive (plant)
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Pour cela nous allons utiliser les méthodes du la classe `frc::LinearSystemId`
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -207,17 +208,19 @@ mSparkMaxSim->iterate(velocity, 12, 0.02);
 ### Commande prédictive d'un ascenseur/grimpeur :
 
 ```cpp
-#include <frc/system/LinearSystem.h>
 #include <frc/system/plant/LinearSystemId.h>
 
-frc::LinearSystem<2, 1, 2>* mElevatorPlant = new
-    frc::LinearSystem<2, 1, 2>{
-        frc::LinearSystemId::ElevatorSystem(
-            *mGearBox,
-            kMass,
-            kDrumRadius,
-            kGearRatio)};
+frc::LinearSystemId::ElevatorSystem(
+    *mGearBox,
+    kMass,
+    kDrumRadius,
+    kGearRatio)
+
+frc::LinearSystemId::IdentifyPositionSystem<units::meters>(kV, kA)
 ```
+
+Les constantes `kV` et `kA` peuvent être déterminées grâce à
+<a href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/system-identification/introduction.html" target="_blank" rel="noopener noreferrer">System Identification (SysID)</a>
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -225,16 +228,18 @@ frc::LinearSystem<2, 1, 2>* mElevatorPlant = new
 ### Commande prédictive d'un lanceur :
 
 ```cpp
-#include <frc/system/LinearSystem.h>
 #include <frc/system/plant/LinearSystemId.h>
 
-frc::LinearSystem<1, 1, 1>* mFlywheelPlant = new
-    frc::LinearSystem<1, 1, 1>{
-        frc::LinearSystemId::FlywheelSystem(
-            *mGearBox,
-            kMOI,
-            kGearRatio)};
+frc::LinearSystemId::FlywheelSystem(
+    *mGearBox,
+    kMOI,
+    kGearRatio)
+
+frc::LinearSystemId::IdentifyVelocitySystem<units::radians>(kV, kA)
 ```
+
+Les constantes `kV` et `kA` peuvent être déterminées grâce à
+<a href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/system-identification/introduction.html" target="_blank" rel="noopener noreferrer">System Identification (SysID)</a>
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -242,16 +247,18 @@ frc::LinearSystem<1, 1, 1>* mFlywheelPlant = new
 ### Commande prédictive d'un bras/pivot :
 
 ```cpp
-#include <frc/system/LinearSystem.h>
 #include <frc/system/plant/LinearSystemId.h>
 
-frc::LinearSystem<2, 1, 2>* mArmPlant = new
-    frc::LinearSystem<2, 1, 2>{
-        frc::LinearSystemId::SingleJointedArmSystem(
-            *mGearBox,
-            kMOI,
-            kGearRatio)};
+frc::LinearSystemId::SingleJointedArmSystem(
+    *mGearBox,
+    kMOI,
+    kGearRatio)
+
+frc::LinearSystemId::IdentifyPositionSystem<units::meters>(kV, kA)
 ```
+
+Les constantes `kV` et `kA` peuvent être déterminées grâce à
+<a href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/system-identification/introduction.html" target="_blank" rel="noopener noreferrer">System Identification (SysID)</a>
 
 </div></script></section></section><section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -268,10 +275,15 @@ frc::LinearSystem<2, 1, 2>* mArmPlant = new
 
 ```cpp
 #include <frc/simulation/ElevatorSim.h>
+#include <frc/system/plant/LinearSystemId.h>
 
 frc::sim::ElevatorSim* mElevatorSim = new
     frc::sim::ElevatorSim{
-        *mElevatorPlant,
+        frc::LinearSystemId::ElevatorSystem(
+            *mGearBox,
+            kMass,
+            kDrumRadius,
+            kGearRatio),
         *mGearBox,
         kMinHeight,
         kMaxHeight,
@@ -289,10 +301,14 @@ Le `kStdDevs` détermine à quel point on croit les mesures, ici on utilisera `{
 
 ```cpp
 #include <frc/simulation/FlywheelSim.h>
+#include <frc/system/plant/LinearSystemId.h>
 
 frc::sim::FlywheelSim* mFlywheelSim = new
     frc::sim::FlywheelSim{
-        *mFlywheelPlant,
+        frc::LinearSystemId::FlywheelSystem(
+            *mGearBox,
+            kMOI,
+            kGearRatio),
         *mGearBox,
         kStdDevs};
 ```
@@ -306,10 +322,14 @@ Le `kStdDevs` détermine à quel point on croit les mesures, ici on utilisera `{
 
 ```cpp
 #include <frc/simulation/SingleJointedArmSim.h>
+#include <frc/system/plant/LinearSystemId.h>
 
 frc::sim::SingleJointedArmSim* mArmSim = new
     frc::sim::SingleJointedArmSim{
-        *mArmPlant,
+        frc::LinearSystemId::SingleJointedArmSystem(
+            *mGearBox,
+            kMOI,
+            kGearRatio),
         *mGearBox,
         kGearRatio,
         kArmLenght,
