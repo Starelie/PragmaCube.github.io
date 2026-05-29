@@ -211,7 +211,7 @@ mSparkMaxSim->iterate(velocity, 12, 0.02);
 #include <frc/system/plant/LinearSystemId.h>
 
 frc::LinearSystemId::ElevatorSystem(
-    *mGearBox,
+    frc::DCMotor::NEO(kMotorNumber),
     kMass,
     kDrumRadius,
     kGearRatio)
@@ -231,7 +231,7 @@ Les constantes `kV` et `kA` peuvent être déterminées grâce à
 #include <frc/system/plant/LinearSystemId.h>
 
 frc::LinearSystemId::FlywheelSystem(
-    *mGearBox,
+    frc::DCMotor::NEO(kMotorNumber),
     kMOI,
     kGearRatio)
 
@@ -250,7 +250,7 @@ Les constantes `kV` et `kA` peuvent être déterminées grâce à
 #include <frc/system/plant/LinearSystemId.h>
 
 frc::LinearSystemId::SingleJointedArmSystem(
-    *mGearBox,
+    frc::DCMotor::NEO(kMotorNumber),
     kMOI,
     kGearRatio)
 
@@ -280,11 +280,11 @@ Les constantes `kV` et `kA` peuvent être déterminées grâce à
 frc::sim::ElevatorSim* mElevatorSim = new
     frc::sim::ElevatorSim{
         frc::LinearSystemId::ElevatorSystem(
-            *mGearBox,
+            frc::DCMotor::NEO(kMotorNumber),
             kMass,
             kDrumRadius,
             kGearRatio),
-        *mGearBox,
+        frc::DCMotor::NEO(kMotorNumber),
         kMinHeight,
         kMaxHeight,
         kDoGravitySimulation,
@@ -304,10 +304,10 @@ frc::sim::ElevatorSim* mElevatorSim = new
 frc::sim::FlywheelSim* mFlywheelSim = new
     frc::sim::FlywheelSim{
         frc::LinearSystemId::FlywheelSystem(
-            *mGearBox,
+            frc::DCMotor::NEO(kMotorNumber),
             kMOI,
             kGearRatio),
-        *mGearBox,
+        frc::DCMotor::NEO(kMotorNumber),
         {0.0}};
 ```
 
@@ -323,10 +323,10 @@ frc::sim::FlywheelSim* mFlywheelSim = new
 frc::sim::SingleJointedArmSim* mArmSim = new
     frc::sim::SingleJointedArmSim{
         frc::LinearSystemId::SingleJointedArmSystem(
-            *mGearBox,
+            frc::DCMotor::NEO(kMotorNumber),
             kMOI,
             kGearRatio),
-        *mGearBox,
+        frc::DCMotor::NEO(kMotorNumber),
         kGearRatio,
         kArmLength,
         kMinAngle,
