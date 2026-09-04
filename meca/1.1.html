@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>Droites et cercles</title>
+    <title>Concepts fondamentaux et lois de Newton</title>
     <link rel="stylesheet" href="../assets/dist/reveal.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../assets/dist/theme/white.css" id="theme" />
     <link rel="stylesheet" href="../assets/css/vs2015.css" />
 	<link rel="stylesheet" href="../assets/css/layout.css" />
@@ -87,181 +88,216 @@
       <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-# Cours 3
-## Droites et cercles
+# Cours 1
+## Concepts fondamentaux et lois de Newton
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div id="introduction" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Droites
-
-Une droite du plan est déteminée par l'équation $ax+by=c$
-- $-\frac{a}{b}$ est la **pente** de la droite (si $b\neq 0$)
-- $\frac{c}{b}$ est l'**ordonnée à l'origine** de la droite (si $b \neq 0$)
-
-Si $b=0$, la droite est verticale.
+# Notation et concepts fondamentaux
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="introduction" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple : déterminer l'unique droite passant par $A$ et $B$
+## Position
 
+La position $\overrightarrow{\textbf{x}}(t)$ d'un objet est un **vecteur** dépendant du temps donnant ses coordonnées dans l'espace. En 3 dimensions, on note
 $$
-A = (x_A, y_A),~~ B=(x_B, y_B)\Longrightarrow
-\begin{cases}
-by_A = c - a x_A \newline
-by_B = c - a x_B
-\end{cases}
-$$
-Si $b=0$, on peut supposer $a=1$ pour une droite bien définie donc
-$$
-\Longrightarrow x_A = c = x_B
+\overrightarrow{\textbf{x}}(t)=\begin{pmatrix}x(t)\newline y(t)\newline z(t)\end{pmatrix}
 $$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple (suite) : 
+## Vitesse
 
-Si $b\neq 0$ et $A\neq B$
+La vitesse $\overrightarrow{\textbf{v}}(t)$ d'un objet est un **vecteur** dépendant du temps donnant la variation instantannée de la position. En 3 dimensions, on note
 $$
-\frac{a}{b}=\frac{y_B-y_A}{x_A-x_B},~~c=ax_A+by_A
-$$
-L'équation de la droite se réécrit
-$$
-y = -\frac{a}{b}x+\frac{c}{b}=\frac{y_B-y_A}{x_B-x_A}x+\frac{y_B-y_A}{x_A-x_B}x_A+y_A
-$$
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Droites (suite)
-
-On peut aussi utiliser les équations paramétriques $\overrightarrow{\textbf{x}}(t)=p+t\overrightarrow{v}$
-- $p$ est un point de base
-- $\overrightarrow{v}$ est le vecteur directeur de la droite
-- $t\in\mathbb{R}$
-
-Pour $p=(p_x,p_y)$, on a 
-$$
-\overrightarrow{v}=
-\begin{pmatrix}
-v_x\newline v_y
-\end{pmatrix},~~
-\overrightarrow{\textbf{x}}(t)=\begin{pmatrix}
-x(t)\newline y(t)
-\end{pmatrix}~~\Longrightarrow \begin{cases}
-x(t)&=p_x+tv_x\newline y(t)&=p_y+tv_y
-\end{cases}
+\overrightarrow{\textbf{v}}(t)=\begin{pmatrix}v_x(t)\newline v_y(t)\newline v_z(t)\end{pmatrix}
 $$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Droites (suites)
+## Accélération
 
-- L'ordonnée à l'origine est donnée par $t_0$ tel que $x(t_0)=0$
-- La pente de la droite est donnée par $\frac{v_y}{v_x}$
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Exemple : trouver les équations paramétriques de la droite $3x-4y=1$
-
-$3x-4y=1\Longleftrightarrow y=\frac{3}{4}x-\frac{1}{4}$. Pour $x=0$, on a $y=-\frac{1}{4}$. Les équations paramétriques sont donc
+L'accélération $\overrightarrow{\textbf{a}}(t)$ d'un objet est un **vecteur** dépendant du temps donnant la variation instantannée de la vitesse. En 3 dimensions, on note
 $$
-\begin{cases}
-x(t)&=t\newline
-y(t)&=\frac{3}{4}t-\frac{1}{4}
-\end{cases}
+\overrightarrow{\textbf{a}}(t)=\begin{pmatrix}a_x(t)\newline a_y(t)\newline a_z(t)\end{pmatrix}
 $$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Cercles
+## Position, vitesse et accélération
 
-Un cercle est déterminé par
-- Un centre $C=(x_C,y_C)$
-- Un rayon $R>0$
-
-Son équation dans un plan est
-$$(x-x_C)^2+(y-y_C)^2=R^2$$
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Cercles (suite)
-
-Il est parfois plus facile d'utiliser les équations paramétriques
+La vitesse est la dérivée temporelle de la position. L'accélération est la dérivée temporelle de la vitesse.
 $$
-\begin{cases}
-x(t)&=R\cos t + x_C\newline
-y(t)&=R\sin t + y_C
-\end{cases},~~t\in[0,2\pi]
+\overrightarrow{\textbf{a}}(t)=\overrightarrow{\textbf{v}}'(t)=\overrightarrow{\textbf{x}}''(t)=\begin{pmatrix}x''(t)\newline y''(t)\newline z''(t)\end{pmatrix}
 $$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Intersection entre droites et cercles
+## Force
 
-Il y a 3 possibilités
-- Pas d'intersection
-- Une intersection (la droite est tangente au cercle)
-- Deux intersections
-
-Il suffit de résoudre le système donné en imposant la condition $\overrightarrow{\textbf{x}_C}(t)=\overrightarrow{\textbf{x}_D}(t)$ où $\overrightarrow{\textbf{x}_C}$ est l'équation pour le cercle et $\overrightarrow{\textbf{x}_D}$ pour la droite.
+Une force $\overrightarrow{F}$ est un vecteur modélisant la capacité de quelque chose à modifier la position ou à déformer un objet.
+- Force gravitationnelle : les objets exercent une force d'attraction entre eux (ex : on tombe car la Terre nous attire vers elle)
+- Force de frottements : un avion rencontre un obstacle dans sa trajectoire (l'air), ce qui le ralentit
+- Force de pression : un ballon se déforme lorsqu'il est frappé
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple : trouver la distance entre un point $P$ et un cercle de centre $C$ et de rayon $R$
+## Énergie
 
-Méthode
-- Trouver les équations paramétriques de $(PC)$
-- Trouver les deux points $P_I$ et $P_I'$ d'intersection avec le cercle
-- Prendre la distance minimale entre $P$-$P_I$ et $P$-$P_I'$
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Exemple (suite) :
-
-Les équations paramétriques de $(PC)$ sont
-\begin{cases}
-x(t)=(x_C-x_P)t+x_C\newline
-y(t)=(y_C-y_P)t+y_C
-\end{cases}
-Le système à résoudre est
-$$\begin{cases}
-R\cos t + x_C&=(x_C-x_P)t+x_C\newline
-R\sin t + y_C&=(y_C-y_P)t+y_C
-\end{cases}$$
+Mesure l'état d'un système. Plusieurs définitions selon le contexte. Deux cas principaux en mécanique :
+- Énergie cinétique $E_c$ : plus un objet va vite, plus il a de l'énergie (plus la force nécessaire pour l'arrêter est grande)
+- Énergie potentielle de pesanteur $E_{pp}$ : plus un objet est haut (par rapport au sol), plus il va accélérer en tombant
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple (suite) :
+# Lois de Newton
 
-Le système est équivalent à (somme des carrés des deux équations) 
-$$
-R^2 = t^2\left((x_C-x_P)^2+(y_C-y_P)^2\right)
-$$
-Les deux points d'intersection sont donnés par 
-$$
-t_+=\frac{R}{||\overrightarrow{PC}||},~~t_-=-\frac{R}{||\overrightarrow{PC}||},
-~~ ||\overrightarrow{PC}||=\sqrt{(x_C-x_P)^2+(y_C-y_P)^2}
-$$
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple (suite) :
+## 1ère loi de Newton (principe d'inertie)
 
-La distance entre $P$ et le cercle est donnée par 
+« Dans un référentiel galiléen, tout corps sur lequel aucune force ne s'applique reste au repos ou en mouvement rectiligne uniforme »
+- Référentiel galiléen : en gros, le sol
+- Mouvement rectiligne uniforme : mouvement en ligne droite à vitesse constante
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 2e loi de Newton (relation fondamentale de la dynamique)
+
+Soit $\overrightarrow{F_{ext}}$ la somme des forces extérieures agissant sur un objet de masse $m$ et de position $\overrightarrow{\textbf{x}}$. Alors
+$$
+\overrightarrow{F_{ext}}
+=m\overrightarrow{\textbf{x}}''
+=m\overrightarrow{\textbf{a}}
+$$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 3e loi de Newton (principe d'action-réaction)
+
+Soit $A$ un objet exerçant une force $\overrightarrow{F}$ sur un objet $B$. Alors $B$ exerce une force $-\overrightarrow{F}$ sur $A$.
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Résolution de problème
+
+1. Lister toutes les données connues
+2. Faire un bilan des forces
+3. Trouver les forces influençant le mouvement
+4. Choisir un référentiel
+5. Appliquer la 2e loi de Newton
+6. Résoudre l'équation différentielle
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple
+
+- Une pente fait un angle $\alpha$ avec le sol et un cube de masse $m$ est posé dessus
+- Les coefficients de frottements statique et cinétique sont respectivement $\mu_s$ et $\mu_c$
+- La distance entre l'extrémité avant du cube et le bout de la pente est $d$
+- La position initiale est 0 et la vitesse initiale est 0
+
+<img src="../assets/img/meca/probleme1.png" width="500px">
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple
+
+- Les frottements statiques « empêchent » les objets de tomber (les frottements compensent le mouvement)
+- Les frottements cinétiques « entraves » les objets en train de tomber (les frottements ralentissent le mouvement)
+- La norme des frottements statiques et cinétiques est proportionnelle à la réaction normale du poids de l'objet (avec coefficient de proportionnalité $\mu_s$ et $\mu_c$)
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple
+
+1. Trouver l'angle $\alpha_0$ à partir duquel il y a mouvement
+2. Lorsque la pente fait un angle $\alpha_0$ avec le sol, trouver le temps de descente du cube
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Bilan des forces
+
+1. Poids du cube $\overrightarrow{P}$
+2. Frottements statiques $\overrightarrow{f_s}$ et cinétiques $\overrightarrow{f_c}$
+3. Réaction normale du sol $\overrightarrow{N}$ (n'influence pas le mouvement)
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Choix du référentiel
+
+La pente (choix naturel car le mouvement est parallèle à la pente). 
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Déterminer $\alpha_0$
+
+$\overrightarrow{f_s}$ compense le mouvement si la composante du poids influençant le mouvement est plus petite que la norme de $\overrightarrow{f_s}$ : $\mu_smg\cos\alpha> mg\sin\alpha$
+
+<img src="../assets/img/meca/triangle1.png" width="500px">
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Déterminer $\alpha_0$
+
+$\alpha_0$ est la valeur critique où 
+$$
+\mu_smg\cos\alpha_0= mg\sin\alpha_0\Longleftrightarrow \alpha_0=\arctan(\mu_s)
+$$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Appliquer la 2e loi de Newton
 
 $$
-\min\left(\sqrt{(x_P-x(t_+))^2+(y_P-y(t_+))^2},\sqrt{(x_P-x(t_-))^2+(y_P-y(t_-))^2}\right)
+\overrightarrow{f_c}+\overrightarrow{P_c}=m\overrightarrow{\textbf{x}''}
 $$
 
+Sur l'axe du mouvement, cela donne
+$$
+-\mu_c mg\cos\alpha_0 + mg \sin \alpha_0 = mx''(t)\Longleftrightarrow x''(t)=g(\sin\alpha_0-\mu_c\cos\alpha_0)
+$$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Résoudre l'équation différentielle
+
+$$
+x''(t)=g(\sin\alpha_0-\mu_c\cos\alpha_0)\Longleftrightarrow x'(t)=g(\sin\alpha_0-\mu_c\cos\alpha_0)t + C_1\newline
+\\
+\Longleftrightarrow x(t)=\frac{1}{2}g(\sin\alpha_0-\mu_c\cos\alpha_0)t^2 + C_1t + C_2
+$$
+Avec les conditions initiales $x(0)=0$ et $x'(0)=0$, on trouve $x(t)=\frac{1}{2}g(\sin\alpha_0-\mu_c\cos\alpha_0)t^2$
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Déterminer le temps de descente
+
+Soit $T$ le temps de descente. On a 
+$$
+x(T)=d\Longleftrightarrow \frac{1}{2}g(\sin\alpha_0-\mu_c\cos\alpha_0)T^2 = d\newline
+\Longleftrightarrow T=\sqrt{\frac{2d}{g(\sin\alpha_0-\mu_c\cos\alpha_0)}}.
+$$
 
 </script></section></div>
     </div>

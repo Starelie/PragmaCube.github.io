@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>Droites et cercles</title>
+    <title>Dérivation et optimisation</title>
     <link rel="stylesheet" href="../assets/dist/reveal.css" />
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../assets/dist/theme/white.css" id="theme" />
     <link rel="stylesheet" href="../assets/css/vs2015.css" />
 	<link rel="stylesheet" href="../assets/css/layout.css" />
@@ -87,181 +88,200 @@
       <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-# Cours 3
-## Droites et cercles
+# Cours 4
+## Dérivation et optimisation
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div id="introduction" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Droites
+# Limite de fonction
 
-Une droite du plan est déteminée par l'équation $ax+by=c$
-- $-\frac{a}{b}$ est la **pente** de la droite (si $b\neq 0$)
-- $\frac{c}{b}$ est l'**ordonnée à l'origine** de la droite (si $b \neq 0$)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div id="introduction" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Si $b=0$, la droite est verticale.
+
+## Limite de fonction : définition informelle
+
+Limite de $f(x)=2x$ quand $x$ tend vers 1 :
+$$
+\lim_{x\to 1}f(x)=2
+$$
+La limite est la valeur que prend $f$ en s'approchant arbitrairement de $x$.
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple : déterminer l'unique droite passant par $A$ et $B$
+## Limite de fonction : définition informelle
 
+Dans beaucoup de cas
 $$
-A = (x_A, y_A),~~ B=(x_B, y_B)\Longrightarrow
-\begin{cases}
-by_A = c - a x_A \newline
-by_B = c - a x_B
-\end{cases}
+\lim_{x\to a}f(x)=f(a)
 $$
-Si $b=0$, on peut supposer $a=1$ pour une droite bien définie donc
+La limite peut être infinie :
 $$
-\Longrightarrow x_A = c = x_B
-$$
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Exemple (suite) : 
-
-Si $b\neq 0$ et $A\neq B$
-$$
-\frac{a}{b}=\frac{y_B-y_A}{x_A-x_B},~~c=ax_A+by_A
-$$
-L'équation de la droite se réécrit
-$$
-y = -\frac{a}{b}x+\frac{c}{b}=\frac{y_B-y_A}{x_B-x_A}x+\frac{y_B-y_A}{x_A-x_B}x_A+y_A
-$$
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Droites (suite)
-
-On peut aussi utiliser les équations paramétriques $\overrightarrow{\textbf{x}}(t)=p+t\overrightarrow{v}$
-- $p$ est un point de base
-- $\overrightarrow{v}$ est le vecteur directeur de la droite
-- $t\in\mathbb{R}$
-
-Pour $p=(p_x,p_y)$, on a 
-$$
-\overrightarrow{v}=
-\begin{pmatrix}
-v_x\newline v_y
-\end{pmatrix},~~
-\overrightarrow{\textbf{x}}(t)=\begin{pmatrix}
-x(t)\newline y(t)
-\end{pmatrix}~~\Longrightarrow \begin{cases}
-x(t)&=p_x+tv_x\newline y(t)&=p_y+tv_y
-\end{cases}
+\lim_{x\to +\infty}x=+\infty
 $$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Droites (suites)
+## Limite indéterminée
 
-- L'ordonnée à l'origine est donnée par $t_0$ tel que $x(t_0)=0$
-- La pente de la droite est donnée par $\frac{v_y}{v_x}$
+Pour $f(x)=\frac{1}{x}$, par la gauche
+$$
+\lim_{x\to 0^-}f(x)=-\infty
+$$
+et par la droite
+$$
+\lim_{x\to 0^+}f(x)=+\infty
+$$
+C'est pourquoi $\frac{1}{0}$ n'est pas défini.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Dérivation
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple : trouver les équations paramétriques de la droite $3x-4y=1$
+## Dérivation
 
-$3x-4y=1\Longleftrightarrow y=\frac{3}{4}x-\frac{1}{4}$. Pour $x=0$, on a $y=-\frac{1}{4}$. Les équations paramétriques sont donc
+- Taux de variation instantanné
+- Pente de la tangente en un point de la courbe
+
+La dérivée de $f$ est notée $f'$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Interprétation 
+
+- Dérivée (temporelle) de la position : vitesse
+- Dérivée (temporelle) de la vitesse : accélération
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Définition formelle
+
+La dérivée de $f$ en $x$ est donnée par (si la limite existe)
 $$
-\begin{cases}
-x(t)&=t\newline
-y(t)&=\frac{3}{4}t-\frac{1}{4}
-\end{cases}
+f'(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}
+$$
+Si la limite existe pour tout $x$, on dit que $f$ est dérivable. Pour $f(x)=ax+b$, on a
+$$
+f'(x)=\lim_{h\to 0}\frac{a(x+h)+b-ax-b}{h}=a
+$$
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Propriétés
+
+Soient $f$ et $g$ deux fonctions et $c\in\mathbb R$. On a 
+
+1. $(f+g)'(x)=f'(x)+g'(x)$
+2. $(cf)'(x)=cf'(x)$
+3. $(fg)'(x)=f'(x)g(x)+f(x)g'(x)$
+4. $(\frac{f}{g})'(x)=\frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}$
+5. $(f^c)'(x)=cf'(x)f(x)^{c-1}$
+6. $(f\circ g)'(x)=g'(x)f'(g(x))$, où $(f\circ g)(x)=f(g(x))$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Tableau de dérivées communes
+
+<img src="../assets/img/maths/dérivées.png">
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Tangente en un point
+
+Soit $f(x)$ une fonction et $\Gamma(t)=(t,f(t))$ sa courbe représentatrice (son graphique). La droite tangente à $\Gamma$ en $\Gamma(t)$ est donnée par
+$$
+T_{f,t}(x)=f'(t)(x-t)+f(t)
+$$
+Utilité : approximer une fonction localement
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple : approximer $2.2^4$
+
+Soit $f(x)=x^4$. On a $f'(x)=4x^3$, donc $f'(2)=32$.
+La tangente à $f$ en $(2, f(2))$ est donnée par
+$$
+T_{f,t}(x)=f'(t)(x-t)+f(t)=32(x-2)+16\newline\Longrightarrow T_{f,t}(2.2)=32\times 0.2+16 = 22.4
+$$
+On déduit que $2.2^4\approx 22.4$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Optimisation
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Optimisation (à un paramètre)
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Objectif : minimiser / maximiser une quantité
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Comment faire ? minimiser / maximiser une fonction
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Trouver le minimum / maximum d'une fonction
+
+Soit $f:\mathbb R \to \mathbb R$
+- Si $f$ est dérivable, $x_0$ est un point critique de $f$ si $f'(x_0)=0$
+- Un minimum / maximum de $f$ est un point critique
+
+Si $f$ est seulement définie sur $[a,b]$, un minimum / maximum est soit un point critique, soit $f(a)$ ou $f(b)$.
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple : trouver le minimum / maximum d'un polynôme de degré 2
+
+$f(x)=ax^2+bx+c$, $a\,b,c\in\mathbb R$, $a\neq 0$. $f$ est dérivable et on a 
+$$
+f'(x)=0\Longleftrightarrow 2ax+b=0\Longleftrightarrow x=-\frac{b}{2a}
 $$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Cercles
+## Exemple (suite)
 
-Un cercle est déterminé par
-- Un centre $C=(x_C,y_C)$
-- Un rayon $R>0$
+Déterminer si c'est un minimum ou maximum : test de la dérivée seconde.
+- Si $x_0$ est un point critique et $f''(x_0)>0$, $f(x_0)$ est un minimum
+- Si $x_0$ est un point critique et $f''(x_0) < 0$, $f(x_0)$ est un maximum
 
-Son équation dans un plan est
-$$(x-x_C)^2+(y-y_C)^2=R^2$$
+Ici, $f''(x)=a$ donc $f(-\frac{b}{2a})$ est un minimum si $a>0$ et un maximum si $a< 0$.
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Cercles (suite)
+## Exemple 2 : minimiser la distance entre un point et un cercle
 
-Il est parfois plus facile d'utiliser les équations paramétriques
+On considère le point $P=(a,b)$ et le cercle $(R \cos t, R \sin t)$ $t\in[0,2\pi]$. La distance entre un point du cercle et P est
 $$
-\begin{cases}
-x(t)&=R\cos t + x_C\newline
-y(t)&=R\sin t + y_C
-\end{cases},~~t\in[0,2\pi]
+d(t)=\sqrt{(R\cos t-a)^2+(R\sin t-b)^2}
 $$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Intersection entre droites et cercles
+## Exemple 2 (suite)
 
-Il y a 3 possibilités
-- Pas d'intersection
-- Une intersection (la droite est tangente au cercle)
-- Deux intersections
-
-Il suffit de résoudre le système donné en imposant la condition $\overrightarrow{\textbf{x}_C}(t)=\overrightarrow{\textbf{x}_D}(t)$ où $\overrightarrow{\textbf{x}_C}$ est l'équation pour le cercle et $\overrightarrow{\textbf{x}_D}$ pour la droite.
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Exemple : trouver la distance entre un point $P$ et un cercle de centre $C$ et de rayon $R$
-
-Méthode
-- Trouver les équations paramétriques de $(PC)$
-- Trouver les deux points $P_I$ et $P_I'$ d'intersection avec le cercle
-- Prendre la distance minimale entre $P$-$P_I$ et $P$-$P_I'$
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Exemple (suite) :
-
-Les équations paramétriques de $(PC)$ sont
-\begin{cases}
-x(t)=(x_C-x_P)t+x_C\newline
-y(t)=(y_C-y_P)t+y_C
-\end{cases}
-Le système à résoudre est
-$$\begin{cases}
-R\cos t + x_C&=(x_C-x_P)t+x_C\newline
-R\sin t + y_C&=(y_C-y_P)t+y_C
-\end{cases}$$
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Exemple (suite) :
-
-Le système est équivalent à (somme des carrés des deux équations) 
+On cherche les points critiques de $d$ :
 $$
-R^2 = t^2\left((x_C-x_P)^2+(y_C-y_P)^2\right)
+d'(t)=0\Longleftrightarrow -R\sin t(R\cos t-a)+R\cos t(R\sin t-b)=0\newline
+\Longleftrightarrow R(b\cos t-a\sin t)=0 \Longleftrightarrow \tan t = \frac{b}{a}\newline
+\Longleftrightarrow t = \arctan\left(\frac{b}{a}\right),~~a>0,
+~~ t = \arctan\left(\frac{b}{a}\right)-\pi,a< 0
 $$
-Les deux points d'intersection sont donnés par 
-$$
-t_+=\frac{R}{||\overrightarrow{PC}||},~~t_-=-\frac{R}{||\overrightarrow{PC}||},
-~~ ||\overrightarrow{PC}||=\sqrt{(x_C-x_P)^2+(y_C-y_P)^2}
-$$
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Exemple (suite) :
-
-La distance entre $P$ et le cercle est donnée par 
-
-$$
-\min\left(\sqrt{(x_P-x(t_+))^2+(y_P-y(t_+))^2},\sqrt{(x_P-x(t_-))^2+(y_P-y(t_-))^2}\right)
-$$
-
 
 </script></section></div>
     </div>

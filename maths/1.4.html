@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>Droites et cercles</title>
+    <title>Courbes</title>
     <link rel="stylesheet" href="../assets/dist/reveal.css" />
     <link rel="stylesheet" href="../assets/dist/theme/white.css" id="theme" />
     <link rel="stylesheet" href="../assets/css/vs2015.css" />
@@ -87,179 +87,168 @@
       <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-# Cours 3
-## Droites et cercles
+# Cours 4
+## Courbes
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div id="introduction" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Droites
+## Objectifs
 
-Une droite du plan est déteminée par l'équation $ax+by=c$
-- $-\frac{a}{b}$ est la **pente** de la droite (si $b\neq 0$)
-- $\frac{c}{b}$ est l'**ordonnée à l'origine** de la droite (si $b \neq 0$)
-
-Si $b=0$, la droite est verticale.
+- Modéliser des courbes en 2 dimensions
+- Calculer la longueur d'arc
+- Calculer le travail d'une force le long d'une courbe
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple : déterminer l'unique droite passant par $A$ et $B$
+## Courbes
 
-$$
-A = (x_A, y_A),~~ B=(x_B, y_B)\Longrightarrow
-\begin{cases}
-by_A = c - a x_A \newline
-by_B = c - a x_B
-\end{cases}
-$$
-Si $b=0$, on peut supposer $a=1$ pour une droite bien définie donc
-$$
-\Longrightarrow x_A = c = x_B
-$$
+- $\Gamma(t)=(x(t),y(t))$ est une courbe du plan si $x$ et $y$ sont des fonctions de $t$
+- Pour simplifier : supposer que $x$ et $y$ sont lisses (dérivables une infinité de fois)
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple (suite) : 
+## Exemple 
 
-Si $b\neq 0$ et $A\neq B$
-$$
-\frac{a}{b}=\frac{y_B-y_A}{x_A-x_B},~~c=ax_A+by_A
-$$
-L'équation de la droite se réécrit
-$$
-y = -\frac{a}{b}x+\frac{c}{b}=\frac{y_B-y_A}{x_B-x_A}x+\frac{y_B-y_A}{x_A-x_B}x_A+y_A
-$$
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Droites (suite)
-
-On peut aussi utiliser les équations paramétriques $\overrightarrow{\textbf{x}}(t)=p+t\overrightarrow{v}$
-- $p$ est un point de base
-- $\overrightarrow{v}$ est le vecteur directeur de la droite
-- $t\in\mathbb{R}$
-
-Pour $p=(p_x,p_y)$, on a 
-$$
-\overrightarrow{v}=
-\begin{pmatrix}
-v_x\newline v_y
-\end{pmatrix},~~
-\overrightarrow{\textbf{x}}(t)=\begin{pmatrix}
-x(t)\newline y(t)
-\end{pmatrix}~~\Longrightarrow \begin{cases}
-x(t)&=p_x+tv_x\newline y(t)&=p_y+tv_y
-\end{cases}
-$$
+- Ellispe : $\Gamma(t)=(a \cos t, b \sin t)$
+- Droite : $\Gamma(t) =(at + b, ct + d)$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Droites (suites)
+## Vecteur tangent
 
-- L'ordonnée à l'origine est donnée par $t_0$ tel que $x(t_0)=0$
-- La pente de la droite est donnée par $\frac{v_y}{v_x}$
+$$
+\Gamma'(t)=(x'(t),y'(t))
+$$
+
+est le vecteur tangent à $\Gamma$ en tout point.
+Si $\Gamma(t)$ est la position d'un objet au temps $t$, $\Gamma'(t)$ est sa vitesse et $\Gamma''(t)$ son accélération.
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple : trouver les équations paramétriques de la droite $3x-4y=1$
+## Longueur d'arc (longueur de la courbe)
 
-$3x-4y=1\Longleftrightarrow y=\frac{3}{4}x-\frac{1}{4}$. Pour $x=0$, on a $y=-\frac{1}{4}$. Les équations paramétriques sont donc
+$$
+\int_a^b ||\Gamma'(t)||dt
+$$
+est la longueur de la courbe entre les points $\Gamma(a)$ et $\Gamma(b)$
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple : chaînette (câble suspendu, soumis à son poids)
+
+<img src="../assets/img/maths/courbes.gif" style="width:700px">
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple (suite)
+
+Les équations paramétriques, pour $a>0$ une constante en mètres, sont
 $$
 \begin{cases}
-x(t)&=t\newline
-y(t)&=\frac{3}{4}t-\frac{1}{4}
+x(t)&=a\ln(t)\newline
+y(t)&=\frac{a}{2}(t+\frac{1}{t})
 \end{cases}
 $$
+On suppose que la chaîne est suspendue à deux mètres du sol. Il faut résoudre $y(t)=2$.
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Cercles
+## Exemple (suite)
 
-Un cercle est déterminé par
-- Un centre $C=(x_C,y_C)$
-- Un rayon $R>0$
-
-Son équation dans un plan est
-$$(x-x_C)^2+(y-y_C)^2=R^2$$
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Cercles (suite)
-
-Il est parfois plus facile d'utiliser les équations paramétriques
 $$
-\begin{cases}
-x(t)&=R\cos t + x_C\newline
-y(t)&=R\sin t + y_C
-\end{cases},~~t\in[0,2\pi]
+y(t)=2\Longleftrightarrow t^2-\frac{4}{a}t+1=0
+$$
+Les deux solutions sont
+$$
+t_-=\frac{2-\sqrt{4-a^2}}{a},~~t_+=\frac{2+\sqrt{4-a^2}}{a}
 $$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Intersection entre droites et cercles
+## Exemple (suite)
 
-Il y a 3 possibilités
-- Pas d'intersection
-- Une intersection (la droite est tangente au cercle)
-- Deux intersections
-
-Il suffit de résoudre le système donné en imposant la condition $\overrightarrow{\textbf{x}_C}(t)=\overrightarrow{\textbf{x}_D}(t)$ où $\overrightarrow{\textbf{x}_C}$ est l'équation pour le cercle et $\overrightarrow{\textbf{x}_D}$ pour la droite.
-
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-## Exemple : trouver la distance entre un point $P$ et un cercle de centre $C$ et de rayon $R$
-
-Méthode
-- Trouver les équations paramétriques de $(PC)$
-- Trouver les deux points $P_I$ et $P_I'$ d'intersection avec le cercle
-- Prendre la distance minimale entre $P$-$P_I$ et $P$-$P_I'$
+La longueur d'arc de la chaînette est
+$$
+\int_{t_-}^{t_+}||\Gamma'(t)||dt=\int_{t_-}^{t_+}\sqrt{x'(t)^2+y'(t)^2}dt=\int_{t_-}^{t_+}\sqrt{\frac{a^2}{t^2}+\frac{a^2}{4}\left(1-\frac{1}{t^2}\right)^2}dt
+$$
+$$
+= \int_{t_-}^{t_+}a\sqrt{\frac{1}{4t^4}+\frac{1}{2t^2}+\frac{1}{4}}dt=\int_{t_-}^{t_+}\frac{a}{2}\left|\frac{1}{t^2}+1\right|dt
+$$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple (suite) :
+## Exemple (suite)
+$$
+=\frac{a}{2}\left(t_+-t_-+\frac{1}{t_-}-\frac{1}{t_+}\right)=2\sqrt{4-a^2}
+$$
 
-Les équations paramétriques de $(PC)$ sont
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Remarque sur l'exemple
+
+Si les extrémités sont fixées à différentes hauteurs, on obtient $t_+$ et $t_-$ en résolvant
+$$
 \begin{cases}
-x(t)=(x_C-x_P)t+x_C\newline
-y(t)=(y_C-y_P)t+y_C
+|x(t_+)-x(t_-)|&=l,\newline
+|y(t_+)-y(t_-)|&=h
 \end{cases}
-Le système à résoudre est
-$$\begin{cases}
-R\cos t + x_C&=(x_C-x_P)t+x_C\newline
-R\sin t + y_C&=(y_C-y_P)t+y_C
-\end{cases}$$
+$$
+où $l$ et $h$ sont connues (espacements horizontal et vertical des extrémités).
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple (suite) :
+## Travail d'une force le long d'une courbe
 
-Le système est équivalent à (somme des carrés des deux équations) 
+Le long d'un déplacement rectiligne $\overrightarrow{AB}$, le travail de $\overrightarrow{F}$ est $W=\overrightarrow{F}\cdot \overrightarrow{AB}$
+
+Le long d'une courbe $\Gamma$, le travail entre $\Gamma(b)$ et $\Gamma(a)$ est
 $$
-R^2 = t^2\left((x_C-x_P)^2+(y_C-y_P)^2\right)
+W=\int_a^b \overrightarrow{F}\cdot \overrightarrow{\Gamma'(t)}dt
 $$
-Les deux points d'intersection sont donnés par 
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple : boule roulant sur un sol en arc de cercle
+
+<img src="../assets/img/maths/arcdecercle.png" style="width:700px">
+
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exemple (suite)
+
+La boule est de masse $m$
+- Les frottements sont négligés
+- La réaction normale n'a aucun impact sur le mouvement
+- Le poids est donné par
 $$
-t_+=\frac{R}{||\overrightarrow{PC}||},~~t_-=-\frac{R}{||\overrightarrow{PC}||},
-~~ ||\overrightarrow{PC}||=\sqrt{(x_C-x_P)^2+(y_C-y_P)^2}
+\overrightarrow{P}=\begin{pmatrix}0\newline
+mg\end{pmatrix}
 $$
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## Exemple (suite) :
+## Exemple (suite)
 
-La distance entre $P$ et le cercle est donnée par 
-
+La trajectoire suivie par le centre de masse est
 $$
-\min\left(\sqrt{(x_P-x(t_+))^2+(y_P-y(t_+))^2},\sqrt{(x_P-x(t_-))^2+(y_P-y(t_-))^2}\right)
+\Gamma(t)=((R-r)\cos t,(R-r)\sin t),~~-\pi\leq t\leq \alpha-\frac{\pi}{2}
+$$
+Ainsi,
+$$
+\int_{-\pi}^{\alpha-\frac{\pi}{2}}\overrightarrow{P}\cdot \Gamma'(t)dt=\int_{-\pi}^{\alpha-\frac{\pi}{2}}mg(R-r)\cos tdt=mg(R-r)\sin\left(\alpha-\frac{\pi}{2}\right)
 $$
 
 
