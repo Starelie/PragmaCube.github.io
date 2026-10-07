@@ -90,7 +90,7 @@
 # Cours 4
 ## Dérivation et optimisation
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="limite" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 # Limite de fonction
 
@@ -135,7 +135,7 @@ $$
 $$
 C'est pourquoi $\frac{1}{0}$ n'est pas défini.
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="derivation" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 # Dérivation
 
@@ -215,7 +215,7 @@ $$
 On déduit que $2.2^4\approx 22.4$
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="optimisation" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 # Optimisation
 
@@ -239,7 +239,7 @@ Soit $f:\mathbb R \to \mathbb R$
 Si $f$ est seulement définie sur $[a,b]$, un minimum / maximum est soit un point critique, soit $f(a)$ ou $f(b)$.
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="exemple-1" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Exemple : trouver le minimum / maximum d'un polynôme de degré 2
 
@@ -260,7 +260,7 @@ Déterminer si c'est un minimum ou maximum : test de la dérivée seconde.
 Ici, $f''(x)=a$ donc $f(-\frac{b}{2a})$ est un minimum si $a>0$ et un maximum si $a< 0$.
 
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<div id="exemple-2" class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ## Exemple 2 : minimiser la distance entre un point et un cercle
 
@@ -391,6 +391,10 @@ $$
 				{ icon: '<i class="fa fa-home" onclick = "window.location.href = \'../maths.html\';"></i>',
 				title: 'Page d\'accueil',
 				action: ''
+				},
+				{ icon: '<i class="fa fa-list"></i>',
+				title: 'Table des matières',
+				action: 'toggleTOC();'
 				}
 			]
 		},
