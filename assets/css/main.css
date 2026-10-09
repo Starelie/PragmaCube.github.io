@@ -3232,6 +3232,8 @@ input, select, textarea {
 					height: inherit;
 					line-height: inherit;
 					white-space: nowrap;
+					display: flex;
+					align-items: center;
 				}
 
 					#header .main ul li > * {
@@ -3247,6 +3249,7 @@ input, select, textarea {
 						position: relative;
 						text-indent: 4em;
 						width: 4em;
+						margin: 25% 0;
 					}
 
 						#header .main ul li > a:before {
